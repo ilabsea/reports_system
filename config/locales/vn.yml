@@ -1,0 +1,49 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+vn:
+  index:
+    date: "Date"
+    phone_number: "Phone Number"
+    audio: "Audio"
+    message: "Message"
+    symptom: "Symptom"
+    location: "Location"
+  login:
+    please_sign_in: "Làm ơn đăng nhập"
+    email_address: "Địa chỉ email"
+    password: "Mật khẩu"
+    sign_in: "Đăng nhập"
+  search:
+    from: "From"
+    to: "To"
+    seach: "Search"
+    phone_number: "Phone number"
+    location: "Location"
+  import:
+    confirm_import: "Confirm Import"
+    import_excel: "Import EXCEL"
+    upload_wit_ai_entities: "Upload Wit AI entities"
+    submit: "Submit"
+    first_explain: "The EXCEL file must be an .xls file format and don't have a header row."
+    second_explain: "After uploading the file, you will be able to view how each column will be imported."
+    third_explain: "You also can find the file template"
+    here: "here"

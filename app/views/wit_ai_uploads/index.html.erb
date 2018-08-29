@@ -1,0 +1,16 @@
+<div class="ux-collapsible w40 import_csv box grey" data-on-expanded="box grey">
+  <div class="ux-content">
+    <h3> Upload Wit AI entities </h3>
+    <span>
+      The EXCEL file must be an .xls file format and don't have a header row. <br />After uploading the file, you will be able to view how each column will be imported.<br />
+      You also can find the file template <a href="template.xls">here</a> 
+    </span>
+    <br /><br />
+    <%= form_tag(wit_ai_uploads_new_upload_path(), multipart: true, :method => 'POST') do %>
+        <div class="file-upload">
+          <input class="choose" id="file" name="file" type="file">
+          <input type="submit" class="button" />
+        </div>
+    <% end %>
+  </div>
+</div>

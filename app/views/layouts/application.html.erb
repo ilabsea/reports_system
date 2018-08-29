@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Symptom Reporting System</title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+      <div class="navbar">
+      <div class="navbar-inner">
+        <div class="hearder_narrow">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </a>
+          <%= image_tag "logo_small.png", :alt => 'Department of Health', :width => '32',  :title => 'Department of Health', :style => "padding: 5px 10px 5px;", :class => 'brand' %>
+          <a class="brand" href="/" name="top">Symptom Reporting System</a>
+
+          <div class="nav-collapse collapse">
+<!--             <ul class="nav">
+              <li><%= link_to raw('<i class="icon-globe"></i> Map'),"collections" , :method => :get, :style => "padding: 10px" %></li>
+              <li class="divider-vertical"></li>
+            </ul> -->
+            
+            <div class="btn-group pull-right">
+              <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                <i class="icon-user"></i> <%= session["email"] || "UNKNOWN" %> <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <li><%= link_to " Sign out", logout_path(), :method => :GET %></li>
+              </ul>
+            </div>
+          </div>
+        <!--/.nav-collapse -->
+        </div>
+      <!--/.container-fluid -->
+      </div>
+    <!--/.navbar-inner -->
+    </div>
+    <div class="body-content" style="min-width:1000px">
+      <center>
+        <% if flash[:error] -%>
+          <div class="alert alert-error">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <%=h flash[:error] %>
+          </div>
+        <% end -%>
+        <% if flash[:notice] -%>
+          <div class="alert alert-success">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <%=h flash[:notice] %>
+          </div>
+        <% end -%>
+      </center>
+      <%= yield %>
+    </div>
+  </body>
+</html>

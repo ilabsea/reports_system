@@ -1,0 +1,140 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require bootstrap
+ *= require bootstrap-datepicker3
+ *= require_tree .
+ *= require_self
+ */
+
+
+/* Credit to bootsnipp.com for the css for the color graph */
+.colorgraph {
+  height: 5px;
+  border-top: 0;
+  background: #c4e17f;
+  border-radius: 5px;
+  background-image: -webkit-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+  background-image: -moz-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+  background-image: -o-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+  background-image: linear-gradient(to right, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+}
+
+.content-body{
+	padding-top: 50px;
+}
+
+.fplay {
+  background-image: url(../images/play.png);
+}
+
+.fdownload{
+	background-image: url(../images/download.png);
+}
+
+.row {
+  margin-left: 0px;
+}
+
+.body-content {
+	margin-left: auto;
+	margin-right: auto;
+	width: 1200px;
+}
+
+.body-login-content {
+	margin-left: auto;
+	margin-right: auto;
+	width: 1000px;
+	background-image:url('/nepal.jpg');
+	background-repeat: no-repeat;
+}
+
+.sponsor{
+	float: left;
+	width:300px;
+}
+
+.project_title{
+	float: left;
+	width: 400px;
+}
+
+.project_name{
+	float: left;
+	width: 300px;
+}
+
+.to-right{
+	right: 0px;
+	float: right;
+}
+
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+.hearder_narrow {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.menu-item{
+	padding: 10px 10px;
+}
+
+.bold_link{
+	font-weight: bold;
+}
+
+.deleted{
+	background-color: #FFDFDD;
+}
+
+.updated{
+	background-color: #ADDFFF;
+}
+
+.deleted_ex{
+	height: 20px; 
+	width: 20px; 
+	background-color: #FFDFDD;
+}
+
+.updated_ex{
+	height: 20px; 
+	width: 20px; 
+	background-color: #ADDFFF;
+}
+
+.clear {
+	clear: both;
+}
+
+.email-label{
+	padding-left: 10px;
+}
+
+.list{
+	padding: 10px;
+}
+
+.list-item{
+	margin-bottom: 10px;
+}
+
+.action {
+	min-width: 50px;
+}
+
