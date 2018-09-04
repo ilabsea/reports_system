@@ -9,16 +9,16 @@ class SessionsController < ApplicationController
   
   def create
     begin
-      response = User::request_verboice_authentication(params[:email], params[:password])
+      response = Service::request_verboice_authentication(params[:email], params[:password])
       if(response["success"])
         session["auth_token"] = response["auth_token"]
         session["email"] = response["email"]
         redirect_to reports_path()
       else
-        redirect_to root_url, error: "User or password is incorrect!"
+        redirect_to root_url, notice: "User or password is incorrect!"
       end
     rescue
-      redirect_to root_url, error: "Failed to connect to verboice!"
+      redirect_to root_url, notice: "Failed to connect to verboice!"
     end
   end
   
