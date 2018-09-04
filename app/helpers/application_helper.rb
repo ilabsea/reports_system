@@ -1,4 +1,26 @@
 module ApplicationHelper
+
+  def description_detail(data)
+    message = []
+    data.each do |key, value|
+      symptoms = value[Options.symptoms_key].map { |s| s}
+      message << "There are #{value[Options.number_of_case_key]} #{single_or_plural(value[Options.number_of_case_key])} of #{symptoms.join(' and ')}"
+    end
+    message.join(", ")
+  end
+
+  def single_or_plural value
+    if value <=1
+      "case"
+    else
+      "cases"
+    end 
+  end
+
+  def section_active(action)
+    return (params[:controller] == action)? "active": ""
+  end
+
 	def page_title
     content_for?(:title) ? "#{content_for(:title)} | #{ENV['APP_NAME']}"  : ENV['APP_NAME']
   end

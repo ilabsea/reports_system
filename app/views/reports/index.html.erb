@@ -1,12 +1,6 @@
-<div class="ux-collapsible w40 import_csv box grey" data-on-expanded="box grey">
-  <span>
-    <a class="button fimport" href="<%= wit_ai_uploads_path()%>"><%= t('import.import_excel') %></a>
-  </span>
-</div>
 
 <%= form_tag reports_path(), :method => :GET do %>
   <fieldset>
-    <legend></legend>
     <div class="form-group">
       <div class="row">
         <div class="colspan-4">
@@ -69,7 +63,7 @@
             </audio>
           </td>
           <td><%= report["message"] %></td> 
-          <td><%= report["properties"] %></td>
+          <td><%= description_detail(report["properties"]) %></td>
           <td><%= report["location"] %></td>                           
         </tr> 
       <% end %>  
@@ -79,6 +73,7 @@
     <% end %>                 
   </tbody>
 </table>
+<%= will_paginate @reports %>
 <script type="text/javascript">
   $(function () {
     $('#from').datepicker({format: "dd/mm/yyyy"});

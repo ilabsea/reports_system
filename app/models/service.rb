@@ -1,3 +1,4 @@
+require 'net/http'
 class Service
 
   def self.import_entities entities_name, rows
@@ -86,6 +87,12 @@ class Service
       http.request(req)
     }
     return JSON.parse(res.body) if res.is_a?(Net::HTTPSuccess)
+  end
+
+  def self.request_verboice_authentication(email, password)
+    uri = URI(Options.verboice_url + "/api2/auth")
+    res = Net::HTTP.post_form(uri, {"account[email]" => email, "account[password]" => password})
+    return JSON.parse(res.body)
   end
 
 end

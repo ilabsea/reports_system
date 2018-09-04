@@ -20,10 +20,10 @@
           <a class="brand" href="/" name="top">Symptom Reporting System</a>
 
           <div class="nav-collapse collapse">
-<!--             <ul class="nav">
-              <li><%= link_to raw('<i class="icon-globe"></i> Map'),"collections" , :method => :get, :style => "padding: 10px" %></li>
+            <ul class="nav">
+              <li class=<%= section_active("wit_ai_uploads")  %>><%= link_to raw("<i class='icon-download'></i> #{t('import.import_excel')}"), wit_ai_uploads_path(), :method => :get, :style => "padding: 10px" %></li>
               <li class="divider-vertical"></li>
-            </ul> -->
+            </ul> 
             
             <div class="btn-group pull-right">
               <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
