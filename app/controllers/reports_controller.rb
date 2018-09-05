@@ -5,12 +5,21 @@ class ReportsController < ApplicationController
 
   def index
     param = {}
-    [:from, :to, :phone_number, :location, :limit, :offset].each do |key|
+    [:from, :to, :phone_number, :location].each do |key|
       param[key] = params[key] if params[key]
     end
     # @reports = Service::request_report(session["email"], session["auth_token"], param)
-    request = Service::request_report(session["email"], session["auth_token"], param)
-    @reports = request.paginate(page: params[:page], per_page: 20)
+    page = params[:page] || 0
+    page_size = 20
+    param[:limit] = page_size
+    param[:offset] = page_size*(page.to_i - 1)
+    begin
+      request = Service::request_report(session["email"], session["auth_token"], param)
+      @reports = request.paginate(page: params[:page], per_page: page_size)
+    rescue
+      flash[:error] = "System failed to connect to verboice!"
+      @reports = [].paginate(page: params[:page], per_page: page_size)
+    end
   end
   
 end
