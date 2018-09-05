@@ -3,15 +3,15 @@
 		<%= form_tag sessions_path do %>
 			<fieldset style="padding-top:30px">
 				<h2><%= t('login.please_sign_in') %></h2>
-				<hr class="colorgraph">
+				<hr class="colorgraph" style="width:315px;">
 				<div class="form-group">
-          <input type="email" name="email" id="email" class="form-control input-lg" placeholder="<%= t('login.email_address') %>">
+          <input type="email" style="width:300px;" name="email" id="email" class="form-control input-lg" placeholder="<%= t('login.email_address') %>">
 				</div>
 				<div class="form-group">
-          <input type="password" name="password" id="password" class="form-control input-lg" placeholder="<%= t('login.password') %>">
+          <input type="password"  style="width:300px;"  name="password" id="password" class="form-control input-lg" placeholder="<%= t('login.password') %>">
 				</div>
 				<div class="form-group" style="padding-top:10px;">
-          <input type="submit" class="btn btn-lg btn-primary btn-block" value="<%= t('login.sign_in') %>">
+          <input type="submit" class="btn btn-lg btn-primary btn-block" value="<%= t('login.sign_in') %>" style="width:315px;"  >
 				</div>
 			</fieldset>
 		<% end %>
