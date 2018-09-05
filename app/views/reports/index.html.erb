@@ -3,37 +3,24 @@
   <fieldset>
     <div class="form-group">
       <div class="row">
-        <div class="colspan-4">
+        <div class="colspan-2">
           <label class="control-label" for="from" style="padding-right:5px;"><%= t('search.from') %></label>
-          <input type="text" class="form-control" name="from" id="from" >
+          <input type="text" class="form-control" autocomplete="off"  name="from" id="from" >
         </div>
-        <div class="colspan-4">
+        <div class="colspan-2">
           <label class="control-label" for="to" style="padding-right:5px;"><%= t('search.to') %></label>
-          <input type="text" class="form-control" name="to" id="to" >
+          <input type="text" class="form-control" autocomplete="off"  name="to" id="to" >
         </div>
-      </div>
-    </div>
-    <div class="form-group">
-      <div class="row">
-        <div class="colspan-4">
+        <div class="colspan-2">
           <label class="control-label" for="phone_number" style="padding-right:5px;"><%= t('search.phone_number') %></label>
         <input type="text" class="form-control" name="phone_number" id="phone_number">
         </div>
-      </div>
-      
-    </div>
-    <div class="form-group">
-      <div class="row">
-        <div class="colspan-4">
+        <div class="colspan-2">
           <label class="control-label" for="location" style="padding-right:5px;"><%= t('search.location') %></label>
           <input type="text" class="form-control" name="location" id="location">
         </div>
-      </div>
-    </div>
-    <div class="form-group">
-      <div class="row">
-        <div class="colspan-4">
-          <button type="subm" class="btn btn-success"><%= t('search.search') %></button>
+        <div class="colspan-2">
+          <button type="subm" class="btn btn-success" style="margin-top:25px;"><%= t('search.search') %></button>
         </div>
       </div>
     </div>

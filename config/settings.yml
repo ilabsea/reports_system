@@ -1,5 +1,5 @@
 verboice_url: 'http://192.168.1.148:3001'
-wit_token: 'WIT_TOKEN'
+wit_token: 'WIT_APPLICATION_TOKEN'
 case_key: "case"
 symptoms_key: "symptoms"
 number_of_case_key: "number_of_case"

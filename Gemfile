@@ -55,9 +55,12 @@ end
 # gem 'capistrano-rails', group: :development
 
 group :development do
-  gem 'capistrano'
+  gem 'capistrano', '~> 3.6'
   gem 'rvm'
-  gem 'rvm-capistrano', require: false
+  gem 'capistrano-rvm'
+  gem 'capistrano-bundler'
+  gem 'capistrano-passenger'
+  gem 'capistrano-rails'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   
 end

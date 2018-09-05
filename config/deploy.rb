@@ -1,33 +1,20 @@
-set :application, "Symptom Reporting System"
+set :rvm_type, :system                     # Defaults to: :auto
+set :rvm_ruby_version, '2.4.1'      # Defaults to: 'default'
+
+set :application, "reports_system"
 set :scm, :git
-set :repository,  "https://github.com/ilabsea/reports_system"
-set :scm_passphrase, ""
+set :repo_url,  "https://github.com/ilabsea/reports_system"
+set :branch, "master"
 set :deploy_to, "/var/www/reports_system"
 set :deploy_via, :remote_cache
-set :user, 'user'
-set :group, 'group'
+set :user, 'ilab'
 
-server "", :app, :web, :db, :primary => true
 
-namespace :deploy do
-  task :start do ; end
-  task :stop do ; end
-  task :restart, :roles => :app, :except => { :no_release => true } do
-    run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
-  end
 
-  task :symlink_configs, :roles => :app do
-    %W(settings secrets).each do |file|
-      run "ln -nfs #{shared_path}/#{file}.yml #{release_path}/config/"
-    end
-  end
+# Default value for :linked_files is []
+set :linked_files, fetch(:linked_files, []).push('config/settings.yml','config/secrets.yml')
 
-  task :symlink_data, :roles => :app do
-    run "ln -nfs #{shared_path}/uploads #{release_path}/public/uploads"
-  end
-end
-
-before "deploy:start", "deploy:migrate"
-before "deploy:restart", "deploy:migrate"
-after "deploy:update_code", "deploy:symlink_configs"
-after "deploy:update_code", "deploy:symlink_data"
+# Default value for linked_dirs is []
+set :linked_dirs, fetch(:linked_dirs, []).push('log', 'public/uploads')
+# Passenger
+set :passenger_restart_with_touch, true

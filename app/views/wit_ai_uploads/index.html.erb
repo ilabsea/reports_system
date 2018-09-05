@@ -1,16 +1,42 @@
 <div class="ux-collapsible w40 import_csv box grey" data-on-expanded="box grey">
   <div class="ux-content">
-    <h3> Upload Wit AI entities </h3>
+    <h3> <%= t('import.upload_dataset') %> </h3>
     <span>
       The EXCEL file must be an .xls file format and don't have a header row. <br />After uploading the file, you will be able to view how each column will be imported.<br />
       You also can find the file template <a href="template.xls">here</a> 
     </span>
     <br /><br />
     <%= form_tag(wit_ai_uploads_new_upload_path(), multipart: true, :method => 'POST') do %>
-        <div class="file-upload">
+<!--         <div class="file-upload">
           <input class="choose" id="file" name="file" type="file">
           <input type="submit" class="button" />
+        </div> -->
+        <div class="input-group image-preview">
+            <input placeholder="" type="text" id="disable-text" class="form-control image-preview-filename" disabled="disabled">
+            <!-- don't give a name === doesn't send on POST/GET --> 
+            <span class="input-group-btn"> 
+            <!-- image-preview-clear button -->
+            <button type="button" class="btn btn-default image-preview-clear" style="display:none;"> <span class="glyphicon glyphicon-remove"></span> Clear </button>
+            <!-- image-preview-input -->
+            <div class="btn btn-default image-preview-input" style="margin:0px 0px 10px 0px;"> <span class="glyphicon glyphicon-folder-open"></span> <span class="image-preview-input-title">Browse</span>
+              <input type="file" accept=".xls" name="file" id="file">
+              <!-- rename it --> 
+            </div>
+            <input type="submit" class="btn btn-labeled btn-primary" style="margin:0px 0px 10px 0px;" id="btn-submit" disabled> <span class="btn-label"><i class="glyphicon glyphicon-upload"></i> </span></button>
+            </span> 
         </div>
     <% end %>
   </div>
 </div>
+<script type="text/javascript">
+  $('#file').on('change', function(e){ 
+    if($('#file').get(0).files.length == 0 ){
+      $("#disable-text")[0].value = "No files selected";
+      $("#btn-submit")[0].disabled = true
+    }
+    else{
+      $("#disable-text")[0].value = e.target.files[0].name; 
+      $("#btn-submit")[0].disabled = false
+    }
+  });
+</script>
