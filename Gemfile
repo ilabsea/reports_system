@@ -36,12 +36,30 @@ gem 'wit'
 gem 'bootstrap-datepicker-rails'
 gem 'will_paginate-bootstrap'
 
+group :development, :test do
+  gem 'machinist'
+  gem 'ffaker'
+  gem 'mocha', :require => false
+  gem 'rspec'
+  gem 'rspec-rails'
+  gem "shoulda-matchers"
+  gem 'ci_reporter'
+  gem 'equivalent-xml'
+  gem 'syntax'
+  gem 'timecop'
+  gem 'capybara'
+  gem 'byebug', platform: :mri
+end
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-group :development, :test do
+group :development do
+  gem 'capistrano'
+  gem 'rvm'
+  gem 'rvm-capistrano', require: false
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platform: :mri
+  
 end
 
 group :development do
