@@ -10,7 +10,7 @@ class Service
   def self.proceed(entity)
     wit = Wit.new(access_token: Settings.wit_token)
 
-    if get_entities().include? entity['id']
+    unless get_entities().include? entity['id']
       wit.post_entities(entity)
     else
       wit.put_entities(entity['id'], entity)
@@ -24,7 +24,7 @@ class Service
       if r[0] != nil
         values << {
           "value" => "#{r[0]}",
-          "expressions" => [r[0]]
+          "expressions" => [r[1]]
         }
       end
     end
