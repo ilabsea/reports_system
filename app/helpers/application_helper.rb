@@ -4,8 +4,8 @@ module ApplicationHelper
     message = []
     data.each do |key, value|
       unless value.empty?
-        symptoms = value[Options.symptoms_key].map { |s| s}
-        message << "There are #{value[Options.number_of_case_key]} #{single_or_plural(value[Options.number_of_case_key])} of #{symptoms.join(' and ')}"
+        symptoms = value[Settings.symptoms_key].map { |s| s}
+        message << "There are #{value[Settings.number_of_case_key]} #{single_or_plural(value[Settings.number_of_case_key])} of #{symptoms.join(' and ')}"
       end
     end
     message.join(", ")
@@ -304,7 +304,7 @@ module ApplicationHelper
   end
 
   def audio_path report
-    return Options.verboice_url + "/projects/" + report['project_id'].to_s + "/calls/" + report['call_id'].to_s + "/results/1533197539228.wav"
+    return Settings.verboice_url + "/projects/" + report['project_id'].to_s + "/calls/" + report['call_id'].to_s + "/results/#{Settings.verboice_first_audio_file}.wav"
   end
 
 end
