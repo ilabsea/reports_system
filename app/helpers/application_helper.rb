@@ -3,8 +3,10 @@ module ApplicationHelper
   def description_detail(data)
     message = []
     data.each do |key, value|
-      symptoms = value[Options.symptoms_key].map { |s| s}
-      message << "There are #{value[Options.number_of_case_key]} #{single_or_plural(value[Options.number_of_case_key])} of #{symptoms.join(' and ')}"
+      unless value.empty?
+        symptoms = value[Options.symptoms_key].map { |s| s}
+        message << "There are #{value[Options.number_of_case_key]} #{single_or_plural(value[Options.number_of_case_key])} of #{symptoms.join(' and ')}"
+      end
     end
     message.join(", ")
   end
