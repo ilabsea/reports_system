@@ -4,19 +4,24 @@ module ApplicationHelper
     message = []
     data.each do |key, value|
       unless value.empty?
-        symptoms = value[Settings.symptoms_key].map { |s| s}
-        message << "There are #{value[Settings.number_of_case_key]} #{single_or_plural(value[Settings.number_of_case_key])} of #{symptoms.join(' and ')}"
+        symptoms = []
+        symptoms = value[Settings.symptoms_key].map { |s| s } if value[Settings.symptoms_key]
+        message << "There are #{value[Settings.case].to_i} #{single_or_plural(value[Settings.case])} of #{symptoms.join(' and ')}"
       end
     end
     message.join(", ")
   end
 
   def single_or_plural value
-    if value <=1
-      "case"
-    else
-      "cases"
-    end 
+    if !value.nil? && value.numeric?
+      if value <= 1
+        return 'case'
+      else
+        return "cases"
+      end 
+    end
+
+    return ''
   end
 
   def section_active(action)
