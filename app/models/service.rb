@@ -1,52 +1,39 @@
 require 'net/http'
 class Service
 
-  def self.import_entities entities_name, rows
-    if get_entities().include? entities_name
-      update_entities(entities_name, rows)
+  def self.import_entities entity_name, rows
+    entity = build_entity(entity_name, rows)
+
+    proceed(entity)
+  end
+
+  def self.proceed(entity)
+    wit = Wit.new(access_token: Settings.wit_token)
+
+    if get_entities().include? entity['id']
+      wit.post_entities(entity)
     else
-      create_entities(entities_name, rows)
+      wit.put_entities(entity['id'], entity)
     end
   end
 
-  def self.create_entities entities_name, rows
-    wit = Wit.new(access_token: Options.wit_token)
+  def self.build_entity(entity_name, rows)
     values = []
-    rows.each do |r|
-      if r[0] != nil
-        values << {
-                    "value" => "#{r[0]}",
-                    "expressions" => 
-                      [ r[0]]
-                  }
-      end
-    end
-    new_entity_obj = {
-                        "doc" => "Value number of #{entities_name}",
-                        "id" => entities_name,
-                        "values" => values
-                      }
-    new_entity = wit.post_entities(new_entity_obj)
-  end
 
-  def self.update_entities entities_name, rows
-    wit = Wit.new(access_token: Options.wit_token)
-    values = []
     rows.each do |r|
       if r[0] != nil
         values << {
-                    "value" => "#{r[0]}",
-                    "expressions" => 
-                      [ r[0]]
-                  }
+          "value" => "#{r[0]}",
+          "expressions" => [r[0]]
+        }
       end
     end
-    new_entity_obj = {
-                        "doc" => "Value number of #{entities_name}",
-                        "id" => entities_name,
-                        "values" => values
-                      }
-    new_entity = wit.put_entities(entities_name, new_entity_obj)
+
+    {
+      "doc" => "Value number of #{entity_name}",
+      "id" => entity_name,
+      "values" => values
+    }
   end
 
   def self.read_sheet spreadsheet, index
@@ -72,13 +59,13 @@ class Service
   end
 
   def self.get_entities
-    wit = Wit.new(access_token: Options.wit_token)
+    wit = Wit.new(access_token: Settings.wit_token)
     entities = wit.get_entities()
     return entities
   end
 
   def self.request_report(email, auth_token, params)
-    uri = URI(Options.verboice_url + "/plugin/reports/api2/reports")
+    uri = URI(Settings.verboice_url + "/plugin/reports/api2/reports")
     params[:email] = email
     params[:token] = auth_token 
     uri.query = URI.encode_www_form(params)
@@ -90,7 +77,7 @@ class Service
   end
 
   def self.request_verboice_authentication(email, password)
-    uri = URI(Options.verboice_url + "/api2/auth")
+    uri = URI(Settings.verboice_url + "/api2/auth")
     res = Net::HTTP.post_form(uri, {"account[email]" => email, "account[password]" => password})
     return JSON.parse(res.body)
   end
