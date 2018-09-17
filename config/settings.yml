@@ -1,6 +1,10 @@
-verboice_url: 'http://localhost:3001'
-verboice_first_audio_file: '1533197539228'
-wit_token: 'WIT_APPLICATION_TOKEN'
-symptoms_key: "symptom"
-case_key: "case"
-location_key: "place"
+verboice:
+  url: 'http://localhost:3001'
+  first_audio_file: '1536659392294'
+wit:
+  access_token: 'WIT_APPLICATION_TOKEN'
+  symptoms_key: "symptom"
+  case_key: "case"
+  location_key: "place"
+default_page_size: 10
+

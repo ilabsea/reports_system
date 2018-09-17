@@ -23,3 +23,6 @@
 # ignore config
 /config/settings.yml
 /config/deploy.rb
+
+# ignore public/uploads
+/public/uploads/*

@@ -1,6 +1,6 @@
 require 'net/http'
-class Service
 
+class Service
   def self.import_entities entity_name, rows
     entity = build_entity(entity_name, rows)
 
@@ -8,9 +8,9 @@ class Service
   end
 
   def self.proceed(entity)
-    wit = Wit.new(access_token: Settings.wit_token)
+    wit = Wit.new(access_token: Settings.wit['access_token'])
 
-    unless get_entities().include? entity['id']
+    unless exist? entity['id']
       wit.post_entities(entity)
     else
       wit.put_entities(entity['id'], entity)
@@ -58,14 +58,18 @@ class Service
     return Rails.root.join('public', 'uploads', file_name)
   end
 
+  def self.exist? entity_id
+    get_entities().include? entity['id']
+  end
+
   def self.get_entities
-    wit = Wit.new(access_token: Settings.wit_token)
+    wit = Wit.new(access_token: Settings.wit['access_token'])
     entities = wit.get_entities()
     return entities
   end
 
   def self.request_report(email, auth_token, params)
-    uri = URI(Settings.verboice_url + "/plugin/reports/api2/reports")
+    uri = URI(Settings.verboice['url'] + "/plugin/reports/api2/reports")
     params[:email] = email
     params[:token] = auth_token 
     uri.query = URI.encode_www_form(params)
@@ -77,7 +81,7 @@ class Service
   end
 
   def self.request_verboice_authentication(email, password)
-    uri = URI(Settings.verboice_url + "/api2/auth")
+    uri = URI(Settings.verboice['url'] + "/api2/auth")
     res = Net::HTTP.post_form(uri, {"account[email]" => email, "account[password]" => password})
     return JSON.parse(res.body)
   end

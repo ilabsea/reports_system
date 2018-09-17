@@ -1,20 +1,20 @@
 module ApplicationHelper
 
-  def description_detail(data)
+  def description_detail(reports)
     message = []
-    data.each do |key, value|
-      unless value.empty?
+    reports.each do |report|
+      unless report.empty?
         symptoms = []
-        symptoms = value[Settings.symptoms_key].map { |s| s } if value[Settings.symptoms_key]
-        message << "There are #{value[Settings.case].to_i} #{single_or_plural(value[Settings.case])} of #{symptoms.join(' and ')}"
+        symptoms = report[Settings.wit['symptoms_key']].map { |s| s } if report[Settings.wit['symptoms_key']]
+        message << "There are #{report[Settings.wit['case_key']].to_i} #{single_or_plural(report[Settings.wit['case_key']])} of #{symptoms.join(' and ')}"
       end
     end
     message.join(", ")
   end
 
-  def single_or_plural value
-    if !value.nil? && value.numeric?
-      if value <= 1
+  def single_or_plural kase
+    if !kase.nil? && kase.numeric?
+      if kase.to_i <= 1
         return 'case'
       else
         return "cases"
@@ -309,7 +309,8 @@ module ApplicationHelper
   end
 
   def audio_path report
-    return Settings.verboice_url + "/projects/" + report['project_id'].to_s + "/calls/" + report['call_id'].to_s + "/results/#{Settings.verboice_first_audio_file}.wav"
+    uri = URI::join(Settings.verboice['url'], "calls/#{report['call_id'].to_s}/results/#{Settings.verboice['first_audio_file']}.wav")
+    return uri.to_s
   end
 
 end
