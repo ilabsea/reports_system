@@ -1,37 +1,33 @@
 class SessionsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:new, :create]
+
   def new
-    if current_user
-      redirect_to reports_path()
+    if user_signed_in?
+      redirect_to after_sign_in_path, notice: t('login.already_logged_in')
     else
       render :layout => 'login'
     end
   end
-  
+
   def create
-    begin
-      response = Service::request_verboice_authentication(params[:email], params[:password])
-      if(response["success"])
-        session["auth_token"] = response["auth_token"]
-        session["email"] = response["email"]
-        redirect_to reports_path()
-      else
-        redirect_to root_url, notice: "User or password is incorrect!"
-      end
-    rescue
-      redirect_to root_url, notice: "Failed to connect to verboice!"
+    auth = Session.login(params[:email], params[:password])
+    if(Session.success?)
+      sign_in(auth)
+      redirect_to reports_path
+    else
+      redirect_to login_path, notice: t('login.incorrect')
     end
   end
   
   def destroy
-    session["auth_token"] = nil
-    session["email"] = nil
-    redirect_to root_url, notice: 'Logged out!'
+    sign_out
+    redirect_to login_path, notice: t('login.logged_out!')
   end
 
-  private 
+  private
 
-  def current_user
-    return false if session["email"].to_s.empty? or session["auth_token"].to_s.empty?
-    return true
+  def protected_params
+    params.permit(:email, :password)
   end
+
 end

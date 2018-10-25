@@ -21,8 +21,12 @@
             </audio>
           </td>
           <td><%= report["message"] %></td> 
-          <td><%= description_detail(report["properties"]) %></td>
-          <td><%= report["location"] %></td>
+          <td><%= text_area_tag "report_#{report['id']}_properties", report.readable_report, report_id: report['id'], class: 'editable' %>
+            <span class="glyphicon glyphicon-download-alt"></span>
+          </td>
+          <td><%= text_area_tag "report_#{report['id']}_location", report["location"], report_id: report['id'], class: 'editable' %>
+            <span class="glyphicon glyphicon-download-alt"></span>
+          </td>
         </tr> 
       <% end %>  
     <% else %>

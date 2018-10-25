@@ -5,6 +5,10 @@
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <script type='text/javascript'>
+      window.app_url = "<%= Settings.url_host %>";
+    </script>
   </head>
 
   <body>
@@ -27,10 +31,10 @@
             
             <div class="btn-group pull-right">
               <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-                <i class="icon-user"></i> <%= session["email"] || "UNKNOWN" %> <span class="caret"></span>
+                <i class="icon-user"></i> <%= current_user['email'] || "UNKNOWN" %> <span class="caret"></span>
               </a>
               <ul class="dropdown-menu">
-                <li><%= link_to " Sign out", logout_path(), :method => :GET %></li>
+                <li><%= link_to "Sign out", logout_path(), :method => :GET %></li>
               </ul>
             </div>
           </div>

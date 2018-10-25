@@ -1,5 +1,5 @@
 class WitAiUploadsController < ApplicationController
-  before_action :authenticated_api_user
+  before_action :authenticate_user!
 
   def index
   end

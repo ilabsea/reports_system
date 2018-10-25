@@ -36,6 +36,10 @@ gem 'wit'
 gem 'bootstrap-datepicker-rails'
 gem 'will_paginate-bootstrap'
 
+gem 'typhoeus'
+gem 'virtus'
+gem 'addressable'
+
 group :development, :test do
   gem 'machinist'
   gem 'ffaker'

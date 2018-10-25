@@ -1,5 +1,3 @@
-require 'net/http'
-
 class Service
   def self.import_entities entity_name, rows
     entity = build_entity(entity_name, rows)
@@ -66,24 +64,6 @@ class Service
     wit = Wit.new(access_token: Settings.wit['access_token'])
     entities = wit.get_entities()
     return entities
-  end
-
-  def self.request_report(email, auth_token, params)
-    uri = URI(Settings.verboice['url'] + "/plugin/reports/api2/reports")
-    params[:email] = email
-    params[:token] = auth_token 
-    uri.query = URI.encode_www_form(params)
-    req = Net::HTTP::Get.new(uri)
-    res = Net::HTTP.start(uri.hostname, uri.port) {|http|
-      http.request(req)
-    }
-    return JSON.parse(res.body) if res.is_a?(Net::HTTPSuccess)
-  end
-
-  def self.request_verboice_authentication(email, password)
-    uri = URI(Settings.verboice['url'] + "/api2/auth")
-    res = Net::HTTP.post_form(uri, {"account[email]" => email, "account[password]" => password})
-    return JSON.parse(res.body)
   end
 
 end

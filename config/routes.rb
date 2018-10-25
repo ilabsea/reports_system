@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'logout', to: 'sessions#destroy', as: 'logout'
   
   resources :sessions
-  resources :reports
+  resources :reports, only: [:index, :update]
   resources :wit_ai_uploads, :only => [:index]
   post '/wit_ai_uploads/new_upload' => 'wit_ai_uploads#create'
   get '/wit_ai_uploads/confirm_import' => 'wit_ai_uploads#confirm_import'

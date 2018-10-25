@@ -1,35 +1,10 @@
 module ApplicationHelper
-
-  def description_detail(reports)
-    message = []
-    reports.each do |report|
-      unless report.empty?
-        symptoms = []
-        symptoms = report[Settings.wit['symptoms_key']].map { |s| s } if report[Settings.wit['symptoms_key']]
-        message << "There are #{report[Settings.wit['case_key']].to_i} #{single_or_plural(report[Settings.wit['case_key']])} of #{symptoms.join(' and ')}"
-      end
-    end
-    message.join(", ")
-  end
-
-  def single_or_plural kase
-    if !kase.nil? && kase.numeric?
-      if kase.to_i <= 1
-        return 'case'
-      else
-        return "cases"
-      end 
-    end
-
-    return ''
-  end
-
   def section_active(action)
     return (params[:controller] == action)? "active": ""
   end
 
 	def page_title
-    content_for?(:title) ? "#{content_for(:title)} | #{ENV['APP_NAME']}"  : ENV['APP_NAME']
+    content_for?(:title) ? "#{content_for(:title)} | #{ENV['APP_NAME']}" : ENV['APP_NAME']
   end
   
   def page_header title, options={},  &block
