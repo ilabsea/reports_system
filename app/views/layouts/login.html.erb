@@ -1,40 +1,40 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title><%=page_title %></title>
-   <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-      <script src="assets/html5shiv.js"></script>
-    <![endif]-->
-  
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" >
-</head>
-<body>
-  <div class="container content-body">
-    <div class="row-fluid" >
-      <div class="span6" style="text-align: center;">
-        <div class="logo">
-          <div>
-          <h3><%= image_tag "logo.png", :alt => 'Department of Health', :title => 'Department of Health', :style => "padding-top: 25px;" %></h3>
+  <head>
+    <title><%= t('app_name') %></title>
+     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+      <!--[if lt IE 9]>
+        <script src="assets/html5shiv.js"></script>
+      <![endif]-->
+    
+    <%= stylesheet_link_tag    "application", :media => "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+  </head>
+
+  <body>
+    <div class="container content-body">
+      <div class="row-fluid" >
+        <div class="span6" style="text-align: center;">
+          <div class="logo">
+            <div>
+            <h3><%= image_tag "logo.png", alt: t('app.name'), title: t('app.name'), :style => "padding-top: 25px;" %></h3>
+            </div>
           </div>
-          <h2> <%= ENV['APP_NAME'] %> </h2>
         </div>
-      </div>
-      <div class="span6">
-        <%if alert || notice %> 
-          <% css_class = alert.nil? ? "warning" : "notice"   %>        
-          <div class="alert <%= css_class %>" >
-            <button type="button" class="close" data-dismiss="alert">&times;</button>
-            <%= alert || notice %>
-          </div>
-        <% end %> 
-        <%= yield %>       
-      </div>
-    </div>   
-  </div>
-  <footer> <%= render 'layouts/footer' %> </footer>
-</body>
+        <div class="span6">
+          <%if alert || notice %> 
+            <% css_class = alert.nil? ? "warning" : "notice"%>
+            <div class="alert <%= css_class %>" >
+              <button type="button" class="close" data-dismiss="alert">&times;</button>
+              <%= alert || notice %>
+            </div>
+          <% end %> 
+          <%= yield %>
+        </div>
+      </div>   
+    </div>
+    <footer> <%= render 'layouts/footer' %> </footer>
+  </body>
 </html>

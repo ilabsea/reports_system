@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
 
   def new
     if user_signed_in?
-      redirect_to after_sign_in_path, notice: t('login.already_logged_in')
+      redirect_to reports_path
     else
       render :layout => 'login'
     end
@@ -21,7 +21,7 @@ class SessionsController < ApplicationController
   
   def destroy
     sign_out
-    redirect_to login_path, notice: t('login.logged_out!')
+    redirect_to login_path, notice: t('login.logged_out')
   end
 
   private

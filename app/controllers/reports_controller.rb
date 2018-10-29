@@ -7,7 +7,7 @@ class ReportsController < ApplicationController
     begin
       @reports  = Service::Report.where(@filter_params).paginate(page: params[:page], per_page: page_size)
     rescue
-      flash[:error] = "Failed to connect to Verboice!"
+      flash[:error] = t('report.failed_connect_verboice')
       @reports = [].paginate(page: params[:page], per_page: page_size)
     end
   end

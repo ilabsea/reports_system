@@ -1,26 +1,22 @@
 module ApplicationHelper
   def section_active(action)
-    return (params[:controller] == action)? "active": ""
+    return (params[:controller] == action)? "active" : ""
   end
 
-	def page_title
-    content_for?(:title) ? "#{content_for(:title)} | #{ENV['APP_NAME']}" : ENV['APP_NAME']
-  end
-  
   def page_header title, options={},  &block
-     content_tag :div,:class => "row-fluid list-header clearfix" do
-        if block_given? 
-            content_title = content_tag :div, :class => "pull-left" do
-              content_tag(:h3, title, :class => "header-title")
-            end
+   content_tag :div,:class => "row-fluid list-header clearfix" do
+    if block_given? 
+      content_title = content_tag :div, :class => "pull-left" do
+        content_tag(:h3, title, :class => "header-title")
+      end
 
-            output = with_output_buffer(&block)
-            content_link = content_tag(:div, output, {:class => "pull-right"})
-            content_title + content_link
-        else
-          content_tag(:h3, title, :class => "header-title")
-        end
-     end
+      output = with_output_buffer(&block)
+      content_link = content_tag(:div, output, {:class => "pull-right"})
+      content_title + content_link
+    else
+      content_tag(:h3, title, :class => "header-title")
+    end
+   end
   end
 
   def error_label error

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Symptom Reporting System</title>
+    <title><%= t('app_name') %></title>
     <%= csrf_meta_tags %>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
     <script type='text/javascript'>
@@ -20,21 +20,21 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             </a>
-          <%= image_tag "logo_small.png", :alt => 'Department of Health', :width => '32',  :title => 'Department of Health', :style => "padding: 5px 10px 5px;", :class => 'brand' %>
-          <a class="brand" href="/" name="top">Symptom Reporting System</a>
+          <%= image_tag "logo_small.png", :alt => "<%= t('logo_title')", :width => '32',  :title => "<%= t('logo_title')", :style => "padding: 5px 10px 5px;", :class => 'brand' %>
+          <a class="brand" href="/" name="top"><%= t('app_name') %></a>
 
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <li class=<%= section_active("wit_ai_uploads")  %>><%= link_to raw("<i class='icon-download'></i> #{t('import.import_excel')}"), wit_ai_uploads_path(), :method => :get, :style => "padding: 10px" %></li>
+              <li class=<%= section_active("wit_ai_uploads")  %>><%= link_to raw("<i class='icon-download'></i> #{t('import.import_dataset')}"), wit_ai_uploads_path(), :method => :get, :style => "padding: 10px" %></li>
               <li class="divider-vertical"></li>
             </ul> 
             
             <div class="btn-group pull-right">
               <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-                <i class="icon-user"></i> <%= current_user['email'] || "UNKNOWN" %> <span class="caret"></span>
+                <i class="icon-user"></i> <%= current_user['email'] || t('user.unknown') %> <span class="caret"></span>
               </a>
               <ul class="dropdown-menu">
-                <li><%= link_to "Sign out", logout_path(), :method => :GET %></li>
+                <li><%= link_to t('login.log_out'), logout_path(), :method => :GET %></li>
               </ul>
             </div>
           </div>

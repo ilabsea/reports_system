@@ -1,10 +1,11 @@
 <h1>
-  Preview file
+  <%= t('import.preview_file')
 </h1>
 
-<button class="orange">
-  <a href="<%= wit_ai_uploads_confirm_import_path(:file_name => @file_name)%>"> Confirm Import </a>
-</button>
+<div class='actionable'>
+  <a href="<%= wit_ai_uploads_confirm_import_path(:file_name => @file_name)%>" class='btn btn-primary'> <%= t('import.confirm_import') %> </a>
+</div>
+
 <br />
 <br />
 <div class="panel with-nav-tabs panel-primary">
