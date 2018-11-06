@@ -1,4 +1,6 @@
-url_host: http://192.168.1.149:3001
+url_host: http://localhost:3000
+timezone: 'Asia/Bangkok'
+datetime_format: '%Y-%m-%d %H:%M'
 verboice:
   url: 'http://localhost:3001'
   first_audio_file: '1536659392294'

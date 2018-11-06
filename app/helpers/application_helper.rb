@@ -250,21 +250,12 @@ module ApplicationHelper
     text.html_safe
   end
 
-  def time_ago_tag date_time
-    format =  date_time.class == Date ? ENV['DATE_FORMAT'] : ENV['DATE_TIME_FORMAT']
-    timeago_tag date_time, :nojs => true, :limit => 20.days.ago, format: format
-  end
-
-  def show_date(date)
-    date ? date.strftime(ENV['DATE_FORMAT']) : ''
-  end
-
   def show_readable_date(date_string)
     show_date_time(DateTime.parse(date_string))
   end
 
   def show_date_time date_time
-    date_time ? date_time.strftime('%Y-%m-%d %H:%M') : ''
+    date_time ? date_time.in_time_zone(Settings.timezone).strftime(Settings.datetime_format) : ''
   end
 
   def nav_status(controllers=[])
