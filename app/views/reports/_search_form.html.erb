@@ -1,27 +1,39 @@
-<%= form_tag reports_path(), :method => :GET do %>
-  <fieldset>
-    <div class="form-group">
-      <div class="row">
-        <div class="colspan-2">
-          <label class="control-label" for="from" style="padding-right:5px;"><%= t('search.from') %></label>
-          <input type="text" class="form-control" autocomplete="off"  name="from" id="from" >
+<div class="panel-heading">
+  <h5 class="panel-title">
+    <a data-toggle="collapse" href="#filter-panel">
+      <%= t('report.search_criteria') %>
+    </a>
+  </h5>
+</div>
+
+<div id="filter-panel" class="panel-collapse collapse">
+  <div class="panel-body">
+    <%= form_tag reports_path(), :method => :GET do %>
+      <fieldset>
+        <div class="form-group">
+          <div class="row">
+            <div class="colspan-2">
+              <label class="control-label" for="from" style="padding-right:5px;"><%= t('search.from') %></label>
+              <input type="text" class="form-control" autocomplete="off"  name="from" id="from" value="<%= params[:from] %>">
+            </div>
+            <div class="colspan-2">
+              <label class="control-label" for="to" style="padding-right:5px;"><%= t('search.to') %></label>
+              <input type="text" class="form-control" autocomplete="off"  name="to" id="to" value="<%= params[:to] %>">
+            </div>
+            <div class="colspan-2">
+              <label class="control-label" for="phone_number" style="padding-right:5px;"><%= t('search.phone_number') %></label>
+            <input type="text" class="form-control" name="phone_number" id="phone_number" value="<%= params[:phone_number] %>">
+            </div>
+            <div class="colspan-2">
+              <label class="control-label" for="location" style="padding-right:5px;"><%= t('search.location') %></label>
+              <input type="text" class="form-control" name="location" id="location" value="<%= params[:location] %>">
+            </div>
+            <div class="colspan-2">
+              <button type="subm" class="btn btn-primary" style="margin-top:25px;"><span class="glyphicon glyphicon-search" aria-hidden="true"> <%= t('search.search') %></span></button>
+            </div>
+          </div>
         </div>
-        <div class="colspan-2">
-          <label class="control-label" for="to" style="padding-right:5px;"><%= t('search.to') %></label>
-          <input type="text" class="form-control" autocomplete="off"  name="to" id="to" >
-        </div>
-        <div class="colspan-2">
-          <label class="control-label" for="phone_number" style="padding-right:5px;"><%= t('search.phone_number') %></label>
-        <input type="text" class="form-control" name="phone_number" id="phone_number">
-        </div>
-        <div class="colspan-2">
-          <label class="control-label" for="location" style="padding-right:5px;"><%= t('search.location') %></label>
-          <input type="text" class="form-control" name="location" id="location">
-        </div>
-        <div class="colspan-2">
-          <button type="subm" class="btn btn-primary" style="margin-top:25px;"><%= t('search.search') %></button>
-        </div>
-      </div>
-    </div>
-  </fieldset>
-<% end %>
+      </fieldset>
+    <% end %>
+  </div>
+</div>

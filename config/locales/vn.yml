@@ -47,6 +47,7 @@ vn:
     phone_number: "Số điện thoại"
     location: "Vị trí"
   report:
+    search_criteria: "Tiêu chí tìm kiếm"
     no_data: "Không có dữ liệu"
     failed_connect_verboice: "Không thể kết nối với Verboice!"
   import:
