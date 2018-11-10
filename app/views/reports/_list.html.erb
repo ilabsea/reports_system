@@ -1,6 +1,6 @@
 <% if @reports.size > 0 %>
   <div class='actionable pull-right'>
-    <%= link_to reports_path(format: :csv), class: 'btn btn-primary download' do %>
+    <%= link_to reports_path(format: :csv, params: request.query_parameters.except(:page)), class: 'btn btn-primary download' do %>
       <i class="icon-white icon-download-alt"></i><%= t('report.download_csv') %>
     <% end %>
   </div>
