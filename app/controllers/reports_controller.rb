@@ -11,7 +11,7 @@ class ReportsController < ApplicationController
     rescue
       flash[:error] = t('report.failed_connect_verboice')
     end
-    
+
     respond_to do |format|
       format.html
       format.csv
@@ -51,7 +51,6 @@ class ReportsController < ApplicationController
 
   def csv_options
     @csv_options = { :force_quotes => true, :col_sep => ',' }
-    @streaming = true
     @output_encoding = 'UTF-8'
     @filename = "reports-#{Time.now}.csv"
   end
