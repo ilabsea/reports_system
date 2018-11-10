@@ -24,13 +24,6 @@ vn:
   logo_title: "Tổng cục Y tế dự phòng"
   user:
     unknown: "không xác định"
-  index:
-    date: "Ngày"
-    phone_number: "Số điện thoại"
-    audio: "Âm thanh"
-    message: "Thông điệp"
-    symptom: "Triệu chứng"
-    location: "Vị trí"
   login:
     email_address: "Địa chỉ email"
     password: "Mật khẩu"
@@ -47,9 +40,16 @@ vn:
     phone_number: "Số điện thoại"
     location: "Vị trí"
   report:
+    date: "Ngày"
+    phone_number: "Số điện thoại"
+    audio: "Âm thanh"
+    message: "Thông điệp"
+    symptom: "Triệu chứng"
+    location: "Vị trí"
     search_criteria: "Tiêu chí tìm kiếm"
     no_data: "Không có dữ liệu"
     failed_connect_verboice: "Không thể kết nối với Verboice!"
+    download_csv: tải xuống CSV
   import:
     title: "Tải lên tập dữ liệu"
     desc1: "Tệp EXCEL phải là định dạng tệp .xls và không có hàng tiêu đề."

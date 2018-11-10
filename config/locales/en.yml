@@ -24,13 +24,6 @@ en:
   logo_title: "General Department of Preventive Medicine"
   user:
     unknown: "Unknown"
-  index:
-    date: "Date"
-    phone_number: "Phone Number"
-    audio: "Audio"
-    message: "Message"
-    symptom: "Symptom"
-    location: "Location"
   login:
     email_address: "Email Address"
     password: "Password"
@@ -47,9 +40,16 @@ en:
     phone_number: "Phone number"
     location: "Location"
   report:
+    date: "Date"
+    phone_number: "Phone Number"
+    audio: "Audio"
+    message: "Message"
+    symptom: "Symptom"
+    location: "Location"
     search_criteria: Search Criteria
     no_data: "No Data"
     failed_connect_verboice: "Failed to connect to Verboice!"
+    download_csv: Download CSV
   import:
     title: "Upload Dataset"
     desc1: "The EXCEL file must be an .xls file format and don't have a header row."

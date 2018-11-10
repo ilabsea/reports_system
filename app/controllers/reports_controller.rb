@@ -2,13 +2,19 @@ require 'will_paginate/array'
 
 class ReportsController < ApplicationController
   before_action :filter_params, only: [:index]
+  before_action :csv_options, only: [:index], if: :csv_request?
 
   def index
     begin
-      @reports  = Service::Report.where(@filter_params).paginate(page: params[:page], per_page: page_size)
+      @reports = Service::Report.where(@filter_params)
+      @reports = @reports.paginate(page: params[:page], per_page: page_size) if html_request?
     rescue
       flash[:error] = t('report.failed_connect_verboice')
-      @reports = [].paginate(page: params[:page], per_page: page_size)
+    end
+    
+    respond_to do |format|
+      format.html
+      format.csv
     end
   end
 
@@ -41,6 +47,21 @@ class ReportsController < ApplicationController
 
   def page_size
     Settings.default_page_size || 10
+  end
+
+  def csv_options
+    @csv_options = { :force_quotes => true, :col_sep => ',' }
+    @streaming = true
+    @output_encoding = 'UTF-8'
+    @filename = "reports-#{Time.now}.csv"
+  end
+
+  def html_request?
+    request.format.html?
+  end
+
+  def csv_request?
+    request.format.csv?
   end
   
 end

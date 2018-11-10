@@ -1,0 +1,5 @@
+csv << [t('report.date'), t('report.phone_number'), t('report.message'), t('report.symptom'), t('report.location'), t('report.audio')]
+
+@reports.each do |report|
+  csv << [show_readable_date(report["created_at"]), report["address"], report.message, report.properties, report.location, audio_path(report)]
+end

@@ -40,6 +40,8 @@ gem 'typhoeus'
 gem 'virtus'
 gem 'addressable'
 
+gem 'csv_builder'
+
 group :development, :test do
   gem 'machinist'
   gem 'ffaker'
@@ -66,7 +68,6 @@ group :development do
   gem 'capistrano-passenger'
   gem 'capistrano-rails'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  
 end
 
 group :development do

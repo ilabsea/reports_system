@@ -106,6 +106,8 @@ GEM
     commonjs (0.2.7)
     concurrent-ruby (1.0.5)
     crass (1.0.4)
+    csv_builder (2.1.1)
+      actionpack (>= 3.0.0)
     descendants_tracker (0.0.4)
       thread_safe (~> 0.3, >= 0.3.1)
     diff-lcs (1.3)
@@ -300,6 +302,7 @@ DEPENDENCIES
   capybara
   ci_reporter
   coffee-rails
+  csv_builder
   equivalent-xml
   ffaker
   font-awesome-sass (~> 4.4.0)
