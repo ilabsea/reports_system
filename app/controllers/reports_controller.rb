@@ -15,6 +15,9 @@ class ReportsController < ApplicationController
     respond_to do |format|
       format.html
       format.csv
+      format.xlsx { 
+        response.headers['Content-Disposition'] = "attachment; filename='reports-#{Time.now}.xlsx'"
+      }
     end
   end
 

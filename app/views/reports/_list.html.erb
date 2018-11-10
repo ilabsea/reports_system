@@ -1,8 +1,22 @@
 <% if @reports.size > 0 %>
   <div class='actionable pull-right'>
-    <%= link_to reports_path(format: :csv, params: request.query_parameters.except(:page)), class: 'btn btn-primary download' do %>
-      <i class="icon-white icon-download-alt"></i><%= t('report.download_csv') %>
-    <% end %>
+    <div class="btn-group pull-right">
+      <a class="btn btn-primary download dropdown-toggle" data-toggle="dropdown" href="#">
+        <i class="icon-white icon-download-alt"></i> <%= t('report.download') %> <span class="caret"></span>
+      </a>
+      <ul class="dropdown-menu">
+        <li>
+          <%= link_to reports_path(format: :csv, params: request.query_parameters.except(:page)), class: 'download' do %>
+            <%= t('report.csv') %>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to reports_path(format: :xlsx, params: request.query_parameters.except(:page)), class: 'download' do %>
+            <%= t('report.excel') %>
+          <% end %>
+        </li>
+      </ul>
+    </div>
   </div>
 <% end %>
 

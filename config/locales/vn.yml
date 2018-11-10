@@ -49,7 +49,9 @@ vn:
     search_criteria: "Tiêu chí tìm kiếm"
     no_data: "Không có dữ liệu"
     failed_connect_verboice: "Không thể kết nối với Verboice!"
-    download_csv: tải xuống CSV
+    download: 'tải xuống'
+    csv: 'Như CSV (.csv)'
+    excel: 'Như Excel 2007 (.xlsx)'
   import:
     title: "Tải lên tập dữ liệu"
     desc1: "Tệp EXCEL phải là định dạng tệp .xls và không có hàng tiêu đề."

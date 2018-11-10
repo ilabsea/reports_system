@@ -1,0 +1,8 @@
+wb = xlsx_package.workbook
+wb.add_worksheet(name: 'Reports') do |sheet|
+  sheet.add_row [t('report.date'), t('report.phone_number'), t('report.message'), t('report.symptom'), t('report.location'), t('report.audio')]
+
+  @reports.each do |report|
+    sheet.add_row [show_readable_date(report["created_at"]), report["address"], report.message, report.properties, report.location, audio_path(report)]
+  end
+end

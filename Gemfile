@@ -41,6 +41,7 @@ gem 'virtus'
 gem 'addressable'
 
 gem 'csv_builder'
+gem 'axlsx_rails'
 
 group :development, :test do
   gem 'machinist'
