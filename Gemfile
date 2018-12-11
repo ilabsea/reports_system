@@ -42,6 +42,7 @@ gem 'addressable'
 
 gem 'csv_builder'
 gem 'axlsx_rails'
+gem 'axlsx', '~> 3.0.0.pre'
 
 group :development, :test do
   gem 'machinist'
